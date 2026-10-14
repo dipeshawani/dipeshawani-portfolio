@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Immediate Theme Initialization (Prevents flicker) -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('portfolio-theme');
+            if (savedTheme === 'light') {
+                document.documentElement.classList.remove('dark');
+                document.documentElement.classList.add('light');
+            } else {
+                document.documentElement.classList.add('dark');
+                document.documentElement.classList.remove('light');
+            }
+        })();
+    </script>
+    <title>Dipesha Ajay Wani | Full Stack Developer</title>
+    <meta name="description" content="Portfolio of Dipesha Ajay Wani - Full Stack Developer specializing in HTML, CSS, JavaScript, React, and Node.js. B.Tech Computer Engineering student at RCPIT Shirpur.">
+    <meta name="keywords" content="Dipesha Wani, Dipesha Ajay Wani, Full Stack Developer, RCPIT Shirpur, React Developer, Web Developer Shindkheda">
+    <meta name="author" content="Dipesha Ajay Wani">
+
+    <!-- Google Fonts: Plus Jakarta Sans & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        heading: ['"Outfit"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            400: '#818cf8',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            accent: '#06b6d4',
+                            glow: '#a855f7'
+                        },
+                        dark: {
+                            bg: '#0a0d14',
+                            card: '#111726',
+                            border: '#1f293d',
+                            surface: '#151d30'
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 3s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        },
+                        glow: {
+                            '0%': { filter: 'drop-shadow(0 0 15px rgba(99, 102, 241, 0.4))' },
+                            '100%': { filter: 'drop-shadow(0 0 25px rgba(6, 182, 212, 0.6))' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-dark-bg text-slate-200 font-sans selection:bg-brand-500 selection:text-white relative overflow-x-hidden">
+
+    <!-- Background Ambient Glow & Grid -->
+    <div class="fixed inset-0 pointer-events-none z-0">
+        <div class="absolute -top-40 -left-40 w-96 h-96 bg-brand-600/20 rounded-full blur-[130px]"></div>
+        <div class="absolute top-1/3 -right-40 w-96 h-96 bg-brand-accent/15 rounded-full blur-[140px]"></div>
+        <div class="absolute -bottom-40 left-1/3 w-96 h-96 bg-brand-glow/15 rounded-full blur-[140px]"></div>
+        <div class="absolute inset-0 bg-grid-pattern opacity-[0.03]"></div>
+    </div>
+
+    <!-- Mouse Tracking Glow Pointer -->
+    <div id="cursor-glow" class="hidden lg:block fixed w-80 h-80 rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2 bg-gradient-to-tr from-brand-500/10 to-brand-accent/10 blur-3xl z-10 transition-transform duration-75"></div>
+
+    <!-- NAVIGATION BAR -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="main-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#home" class="group flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-brand-600 via-brand-500 to-brand-accent flex items-center justify-center font-heading font-extrabold text-white text-xl shadow-lg shadow-brand-500/25 group-hover:scale-105 transition-transform">
+                        DW
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-heading font-bold text-lg text-white group-hover:text-brand-400 transition-colors">
+                            Dipesha Wani
+                        </span>
+                        <span class="text-[11px] text-slate-400 font-medium tracking-wider uppercase">Full Stack Dev</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <div class="hidden md:flex items-center gap-1 bg-dark-card/70 backdrop-blur-md px-4 py-2 rounded-full border border-dark-border/80 shadow-inner">
+                    <a href="#home" class="nav-link px-4 py-1.5 text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-full transition-all">Home</a>
+                    <a href="#about" class="nav-link px-4 py-1.5 text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-full transition-all">About</a>
+                    <a href="#skills" class="nav-link px-4 py-1.5 text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-full transition-all">Skills</a>
+                    <a href="#projects" class="nav-link px-4 py-1.5 text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-full transition-all">Projects</a>
+                    <a href="#education" class="nav-link px-4 py-1.5 text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-full transition-all">Education</a>
+                    <a href="#contact" class="nav-link px-4 py-1.5 text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-full transition-all">Contact</a>
+                </div>
+
+                <!-- Action Button -->
+                <div class="hidden md:flex items-center gap-2.5">
+                    <!-- White / Black Theme Toggle Button -->
+                    <button id="theme-toggle" class="w-10 h-10 rounded-xl text-slate-300 hover:text-white bg-dark-surface/90 hover:bg-dark-border border border-slate-700/60 hover:border-slate-500 transition-all flex items-center justify-center text-lg hover:scale-105 shadow-sm" aria-label="Toggle Theme" title="Toggle White / Black Theme">
+                        <i id="theme-icon" class="fa-solid fa-sun text-amber-400"></i>
+                    </button>
+                    <a href="https://github.com/dipeshawani" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl text-slate-300 hover:text-white bg-dark-surface/90 hover:bg-dark-border border border-slate-700/60 hover:border-slate-500 transition-all flex items-center justify-center text-lg hover:scale-105 shadow-sm" title="GitHub Profile">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a href="resume.html" target="_blank" class="px-4 py-2 rounded-xl text-sm font-semibold text-slate-200 hover:text-white bg-dark-surface/90 hover:bg-dark-border border border-slate-700/60 transition-all flex items-center gap-2">
+                        <i class="fa-regular fa-file-lines text-brand-400"></i>
+                        <span>Resume</span>
+                    </a>
+                    <a href="#contact" class="px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-brand-600 to-brand-accent hover:from-brand-500 hover:to-cyan-400 shadow-md shadow-brand-600/30 hover:shadow-cyan-500/30 transition-all transform hover:-translate-y-0.5">
+                        Let's Talk
+                    </a>
+                </div>
+
+                <!-- Mobile Hamburger Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-xl bg-dark-surface border border-dark-border text-slate-300 hover:text-white focus:outline-none" aria-label="Toggle menu">
+                    <i class="fa-solid fa-bars-staggered text-lg"></i>
+                </button>
+            </nav>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-dark-card/95 backdrop-blur-xl border-b border-dark-border px-6 py-6 transition-all">
+            <div class="flex flex-col gap-4">
+                <a href="#home" class="mobile-link text-slate-300 hover:text-brand-400 font-medium py-1">Home</a>
+                <a href="#about" class="mobile-link text-slate-300 hover:text-brand-400 font-medium py-1">About</a>
+                <a href="#skills" class="mobile-link text-slate-300 hover:text-brand-400 font-medium py-1">Skills</a>
+                <a href="#projects" class="mobile-link text-slate-300 hover:text-brand-400 font-medium py-1">Projects</a>
+                <a href="#education" class="mobile-link text-slate-300 hover:text-brand-400 font-medium py-1">Education</a>
+                <a href="#contact" class="mobile-link text-slate-300 hover:text-brand-400 font-medium py-1">Contact</a>
+                <div class="pt-4 border-t border-slate-800 flex flex-col gap-2.5">
+                    <!-- Mobile Theme Switcher -->
+                    <button id="mobile-theme-toggle" class="w-full py-2.5 px-4 rounded-xl text-sm font-semibold bg-dark-surface hover:bg-slate-800 border border-slate-700 text-slate-200 flex items-center justify-center gap-2 transition-all">
+                        <i id="mobile-theme-icon" class="fa-solid fa-sun text-amber-400"></i>
+                        <span id="mobile-theme-text">Switch to White Theme</span>
+                    </button>
+                    <div class="flex gap-3">
+                        <a href="resume.html" target="_blank" class="w-1/2 text-center py-2.5 rounded-xl text-sm font-semibold bg-dark-surface border border-slate-700 text-slate-200">
+                            <i class="fa-regular fa-file-lines mr-1 text-brand-400"></i> Resume
+                        </a>
+                        <a href="#contact" class="w-1/2 text-center py-2.5 rounded-xl text-sm font-semibold bg-gradient-to-r from-brand-600 to-brand-accent text-white">
+                            Let's Talk
+                        </a>
+                    </div>
+                    <a href="https://github.com/dipeshawani" target="_blank" rel="noopener noreferrer" class="w-full text-center py-2.5 rounded-xl text-sm font-semibold bg-dark-surface hover:bg-slate-800 border border-slate-700 text-slate-200 flex items-center justify-center gap-2 transition-all">
+                        <i class="fa-brands fa-github text-base"></i>
+                        <span>Visit GitHub Profile</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="relative z-10 pt-24">
+
+        <!-- ==================== HERO SECTION ==================== -->
+        <section id="home" class="min-h-[calc(100vh-6rem)] flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Column: Content -->
+                <div class="lg:col-span-7 text-center lg:text-left" data-aos="fade-up" data-aos-duration="1000">
+                    
+                    <!-- Availability Badge -->
+                    <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400 text-xs font-semibold uppercase tracking-wider mb-6">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+                        <span class="relative flex h-2 w-2 rounded-full bg-emerald-500"></span>
+                        Available for Full-time Roles & Internships
+                    </div>
+
+                    <!-- Main Name & Heading -->
+                    <h1 class="font-heading text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-tight mb-4">
+                        Hi, I'm <br class="hidden sm:inline" />
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 via-indigo-300 to-brand-accent">
+                            Dipesha Ajay Wani
+                        </span>
+                    </h1>
+
+                    <!-- Dynamic Typing Text -->
+                    <div class="h-10 text-xl sm:text-2xl font-semibold text-slate-300 flex items-center justify-center lg:justify-start gap-2 mb-6">
+                        <span>I am a</span>
+                        <span id="typed-text" class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-brand-400"></span>
+                        <span class="typing-cursor w-0.5 h-6 bg-brand-accent animate-pulse"></span>
+                    </div>
+
+                    <!-- Short Bio Statement -->
+                    <p class="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed mb-8">
+                        B.Tech Computer Engineering student at <strong class="text-slate-200">RCPIT Shirpur</strong>, passionate about building responsive, robust, and user-centric web applications. Specializing in <span class="text-brand-300 font-medium">React, Node.js, JavaScript, and UI/UX Design in Figma</span>.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 mb-10">
+                        <a href="#projects" class="px-7 py-3.5 rounded-xl font-semibold text-white bg-gradient-to-r from-brand-600 via-indigo-600 to-brand-accent hover:from-brand-500 hover:to-cyan-400 shadow-xl shadow-brand-600/30 hover:shadow-cyan-500/40 transform hover:-translate-y-0.5 transition-all flex items-center gap-2">
+                            <span>Explore Projects</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                        <a href="https://github.com/dipeshawani" target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 rounded-xl font-semibold text-slate-200 hover:text-white bg-dark-card hover:bg-dark-surface border border-slate-700/80 hover:border-slate-500 shadow-lg transition-all flex items-center gap-2 transform hover:-translate-y-0.5">
+                            <i class="fa-brands fa-github text-lg"></i>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="resume.html" target="_blank" class="px-6 py-3.5 rounded-xl font-semibold text-slate-200 hover:text-white bg-dark-card hover:bg-dark-surface border border-slate-700/80 hover:border-brand-500/50 shadow-lg transition-all flex items-center gap-2 transform hover:-translate-y-0.5">
+                            <i class="fa-solid fa-download text-brand-400 text-sm"></i>
+                            <span>View Resume</span>
+                        </a>
+                        <a href="#contact" class="px-6 py-3.5 rounded-xl font-semibold text-slate-300 hover:text-white bg-dark-card/50 hover:bg-dark-card border border-slate-800 hover:border-slate-700 transition-all flex items-center gap-2 transform hover:-translate-y-0.5">
+                            <i class="fa-regular fa-envelope text-brand-accent"></i>
+                            <span>Contact Me</span>
+                        </a>
+                    </div>
+
+                    <!-- Quick Highlights Strip -->
+                    <div class="pt-6 border-t border-dark-border/80 flex flex-wrap items-center justify-center lg:justify-start gap-6 sm:gap-10 text-xs sm:text-sm text-slate-400">
+                        <div class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-location-dot text-brand-accent"></i>
+                            <span>Shindkheda, Maharashtra</span>
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-graduation-cap text-brand-400"></i>
+                            <span>B.Tech Computer @ RCPIT</span>
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-code text-indigo-400"></i>
+                            <span>Full Stack Development</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right Column: Interactive Profile Card -->
+                <div class="lg:col-span-5 flex justify-center" data-aos="zoom-in" data-aos-duration="1000">
+                    <div class="relative w-full max-w-md">
+                        
+                        <!-- Glowing Backdrops -->
+                        <div class="absolute -inset-1.5 bg-gradient-to-r from-brand-600 via-brand-glow to-brand-accent rounded-3xl blur-xl opacity-40 group-hover:opacity-75 transition duration-1000 animate-glow"></div>
+                        
+                        <!-- Main Visual Card -->
+                        <div class="relative bg-dark-card/90 backdrop-blur-xl border border-slate-700/60 rounded-3xl p-6 sm:p-8 shadow-2xl overflow-hidden">
+                            
+                            <!-- Card Header Elements -->
+                            <div class="flex items-center justify-between pb-6 border-b border-slate-800">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
+                                    <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
+                                    <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+                                </div>
+                                <span class="text-xs font-mono text-slate-500">dipesha.dev/profile</span>
+                            </div>
+
+                            <!-- Avatar & Details -->
+                            <div class="py-8 flex flex-col items-center text-center">
+                                <div class="relative mb-6">
+                                    <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl bg-gradient-to-tr from-brand-600 via-indigo-500 to-brand-accent p-1 shadow-2xl">
+                                        <div class="w-full h-full rounded-2xl bg-dark-bg flex items-center justify-center overflow-hidden relative">
+                                            <span class="font-heading font-black text-4xl text-transparent bg-clip-text bg-gradient-to-br from-brand-300 via-white to-brand-accent">
+                                                DAW
+                                            </span>
+                                            <div class="absolute inset-0 bg-brand-500/10 hover:bg-transparent transition-colors"></div>
+                                        </div>
+                                    </div>
+                                    <!-- Floating Tool Badge -->
+                                    <div class="absolute -bottom-2 -right-2 bg-dark-surface border border-slate-700 px-2.5 py-1 rounded-lg text-xs font-semibold text-brand-accent flex items-center gap-1 shadow-lg animate-bounce">
+                                        <i class="fa-brands fa-react text-brand-accent"></i>
+                                        <span>React</span>
+                                    </div>
+                                </div>
+
+                                <h3 class="font-heading font-bold text-2xl text-white mb-1">Dipesha Ajay Wani</h3>
+                                <p class="text-brand-400 font-medium text-sm mb-4">Full Stack Developer & Engineer</p>
+
+                                <!-- Mini Tech Chips -->
+                                <div class="flex flex-wrap items-center justify-center gap-2 mb-6">
+                                    <span class="px-3 py-1 bg-dark-surface border border-slate-800 rounded-lg text-xs font-mono text-slate-300 flex items-center gap-1.5">
+                                        <i class="fa-brands fa-react text-cyan-400"></i> React.js
+                                    </span>
+                                    <span class="px-3 py-1 bg-dark-surface border border-slate-800 rounded-lg text-xs font-mono text-slate-300 flex items-center gap-1.5">
+                                        <i class="fa-brands fa-node-js text-emerald-400"></i> Node.js
+                                    </span>
+                                    <span class="px-3 py-1 bg-dark-surface border border-slate-800 rounded-lg text-xs font-mono text-slate-300 flex items-center gap-1.5">
+                                        <i class="fa-brands fa-js text-yellow-400"></i> JavaScript
+                                    </span>
+                                    <span class="px-3 py-1 bg-dark-surface border border-slate-800 rounded-lg text-xs font-mono text-slate-300 flex items-center gap-1.5">
+                                        <i class="fa-brands fa-figma text-rose-400"></i> Figma
+                                    </span>
+                                </div>
+
+                                <!-- Contact Quick Buttons -->
+                                <div class="w-full grid grid-cols-3 gap-2 pt-4 border-t border-slate-800/80">
+                                    <a href="https://github.com/dipeshawani" target="_blank" rel="noopener noreferrer" class="py-2 px-2 rounded-xl bg-dark-surface hover:bg-slate-800 border border-slate-800 hover:border-slate-600 text-xs text-slate-300 hover:text-white transition-all flex items-center justify-center gap-1.5" title="GitHub Account">
+                                        <i class="fa-brands fa-github text-slate-200"></i> GitHub
+                                    </a>
+                                    <a href="mailto:dipeshawani7@gmail.com" class="py-2 px-2 rounded-xl bg-dark-surface hover:bg-slate-800 border border-slate-800 hover:border-slate-600 text-xs text-slate-300 hover:text-white transition-all flex items-center justify-center gap-1.5">
+                                        <i class="fa-regular fa-envelope text-brand-400"></i> Email
+                                    </a>
+                                    <a href="tel:9420600569" class="py-2 px-2 rounded-xl bg-dark-surface hover:bg-slate-800 border border-slate-800 hover:border-slate-600 text-xs text-slate-300 hover:text-white transition-all flex items-center justify-center gap-1.5">
+                                        <i class="fa-solid fa-phone text-emerald-400"></i> Call
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Floating badge: Education -->
+                            <div class="bg-gradient-to-r from-brand-900/40 to-slate-900/60 p-3 rounded-xl border border-brand-500/20 text-xs text-slate-300 flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-brand-500/20 flex items-center justify-center text-brand-300">
+                                    <i class="fa-solid fa-building-columns"></i>
+                                </div>
+                                <div class="truncate">
+                                    <p class="font-semibold text-white">RCPIT Shirpur</p>
+                                    <p class="text-slate-400 text-[11px] truncate">B.Tech Computer Engineering</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==================== ABOUT ME SECTION ==================== -->
+        <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-dark-border/40">
+            <div class="max-w-7xl mx-auto">
+                
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                    <span class="text-brand-accent text-xs uppercase font-bold tracking-widest px-3 py-1 rounded-full bg-brand-accent/10 border border-brand-accent/20">About Me</span>
+                    <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-white mt-3 mb-4">
+                        Driven by Code, Passionate About Crafting Digital Solutions
+                    </h2>
+                    <div class="w-16 h-1 bg-gradient-to-r from-brand-500 to-brand-accent mx-auto rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                    
+                    <!-- Left: Interactive Highlights Grid -->
+                    <div class="lg:col-span-5 grid grid-cols-2 gap-4" data-aos="fade-right">
+                        
+                        <!-- Card 1 -->
+                        <div class="bg-dark-card border border-dark-border p-6 rounded-2xl hover:border-brand-500/50 transition-all duration-300 group">
+                            <div class="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-laptop-code"></i>
+                            </div>
+                            <h4 class="font-heading font-bold text-lg text-white mb-1">Full Stack</h4>
+                            <p class="text-slate-400 text-xs leading-relaxed">
+                                End-to-end development bridging interactive UI and robust backend logic.
+                            </p>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="bg-dark-card border border-dark-border p-6 rounded-2xl hover:border-brand-accent/50 transition-all duration-300 group">
+                            <div class="w-12 h-12 rounded-xl bg-brand-accent/10 text-brand-accent flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-palette"></i>
+                            </div>
+                            <h4 class="font-heading font-bold text-lg text-white mb-1">UI/UX & Figma</h4>
+                            <p class="text-slate-400 text-xs leading-relaxed">
+                                Designing intuitive wireframes and clean user interfaces in Figma.
+                            </p>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="bg-dark-card border border-dark-border p-6 rounded-2xl hover:border-emerald-500/50 transition-all duration-300 group">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-bolt"></i>
+                            </div>
+                            <h4 class="font-heading font-bold text-lg text-white mb-1">Fast Learner</h4>
+                            <p class="text-slate-400 text-xs leading-relaxed">
+                                Adapting quickly to emerging modern libraries, frameworks, and workflows.
+                            </p>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="bg-dark-card border border-dark-border p-6 rounded-2xl hover:border-indigo-500/50 transition-all duration-300 group">
+                            <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            </div>
+                            <h4 class="font-heading font-bold text-lg text-white mb-1">Computer Eng.</h4>
+                            <p class="text-slate-400 text-xs leading-relaxed">
+                                Solid foundations in computer science from RCPIT Shirpur.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <!-- Right: Story & Bio -->
+                    <div class="lg:col-span-7 bg-dark-card/60 border border-dark-border p-8 sm:p-10 rounded-3xl" data-aos="fade-left">
+                        <h3 class="font-heading text-2xl font-bold text-white mb-4">
+                            Hello! I'm Dipesha Ajay Wani
+                        </h3>
+                        <div class="space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed">
+                            <p>
+                                I am an ambitious <strong class="text-brand-300">Full Stack Developer</strong> currently pursuing my <strong>B.Tech in Computer Engineering</strong> at the renowned <span class="text-white font-medium">R. C. Patel Institute of Technology (RCPIT), Shirpur</span>.
+                            </p>
+                            <p>
+                                My primary passion lies in engineering seamless web applications that solve practical real-world problems. I enjoy the entire development cycle—from sketching prototypes and wireframes in <strong>Figma</strong> to implementing responsive frontends in <strong>HTML5, CSS3, JavaScript, and React</strong>, and managing backend logic with <strong>Node.js</strong>.
+                            </p>
+                            <p>
+                                One of my proudest projects is the <strong class="text-brand-accent">Vishwa Event Decoration System</strong>, a comprehensive web application designed to streamline event bookings, decoration showcases, and client inquiries through an intuitive, accessible interface.
+                            </p>
+                        </div>
+
+                        <!-- Key Info List -->
+                        <div class="mt-8 pt-6 border-t border-dark-border grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm">
+                            <div class="flex items-center gap-3">
+                                <span class="text-slate-400 font-semibold w-24">Location:</span>
+                                <span class="text-slate-200">Shindkheda, Maharashtra</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-slate-400 font-semibold w-24">Email:</span>
+                                <a href="mailto:dipeshawani7@gmail.com" class="text-brand-400 hover:underline truncate">dipeshawani7@gmail.com</a>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-slate-400 font-semibold w-24">Phone:</span>
+                                <a href="tel:9420600569" class="text-slate-200 hover:text-brand-400">+91 9420600569</a>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-slate-400 font-semibold w-24">College:</span>
+                                <span class="text-slate-200">RCPIT Shirpur</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-slate-400 font-semibold w-24">Degree:</span>
+                                <span class="text-slate-200">B.Tech (Computer Engineering)</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-slate-400 font-semibold w-24">Status:</span>
+                                <span class="text-emerald-400 font-medium">Available for Opportunities</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==================== SKILLS & TOOLS SECTION ==================== -->
+        <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8 bg-dark-surface/40 border-t border-dark-border/40">
+            <div class="max-w-7xl mx-auto">
+                
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                    <span class="text-brand-400 text-xs uppercase font-bold tracking-widest px-3 py-1 rounded-full bg-brand-500/10 border border-brand-500/20">Technical Arsenal</span>
+                    <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-white mt-3 mb-4">
+                        Skills & Technologies I Work With
+                    </h2>
+                    <p class="text-slate-400 text-sm sm:text-base">
+                        A collection of programming languages, libraries, and creative tools I leverage to build modern web solutions.
+                    </p>
+                    <div class="w-16 h-1 bg-gradient-to-r from-brand-500 to-brand-accent mx-auto rounded-full mt-4"></div>
+                </div>
+
+                <!-- Skills Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Frontend Development Card -->
+                    <div class="bg-dark-card border border-dark-border rounded-2xl p-7 hover:border-brand-500/60 transition-all duration-300 group shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-2xl group-hover:rotate-6 transition-transform">
+                                <i class="fa-solid fa-code"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-bold text-xl text-white">Frontend</h3>
+                                <p class="text-xs text-slate-400">Client-Side Architecture</p>
+                            </div>
+                        </div>
+
+                        <!-- Skill Items -->
+                        <div class="space-y-4">
+                            <!-- React.js -->
+                            <div>
+                                <div class="flex justify-between text-xs font-semibold mb-1">
+                                    <span class="text-slate-200 flex items-center gap-2"><i class="fa-brands fa-react text-cyan-400"></i> React.js</span>
+                                    <span class="text-brand-400 font-mono">85%</span>
+                                </div>
+                                <div class="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
+                                    <div class="bg-gradient-to-r from-brand-500 to-cyan-400 h-2 rounded-full w-[85%]"></div>
+                                </div>
+                            </div>
+
+                            <!-- JavaScript -->
+                            <div>
+                                <div class="flex justify-between text-xs font-semibold mb-1">
+                                    <span class="text-slate-200 flex items-center gap-2"><i class="fa-brands fa-js text-yellow-400"></i> JavaScript (ES6+)</span>
+                                    <span class="text-brand-400 font-mono">88%</span>
+                                </div>
+                                <div class="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
+                                    <div class="bg-gradient-to-r from-yellow-500 to-amber-400 h-2 rounded-full w-[88%]"></div>
+                                </div>
+                            </div>
+
+                            <!-- HTML5 -->
+                            <div>
+                                <div class="flex justify-between text-xs font-semibold mb-1">
+                                    <span class="text-slate-200 flex items-center gap-2"><i class="fa-brands fa-html5 text-orange-500"></i> HTML5 (Semantic)</span>
+                                    <span class="text-brand-400 font-mono">95%</span>
+                                </div>
+                                <div class="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
+                                    <div class="bg-gradient-to-r from-orange-500 to-rose-400 h-2 rounded-full w-[95%]"></div>
+                                </div>
+                            </div>
+
+                            <!-- CSS3 -->
+                            <div>
+                                <div class="flex justify-between text-xs font-semibold mb-1">
+                                    <span class="text-slate-200 flex items-center gap-2"><i class="fa-brands fa-css3-alt text-blue-500"></i> CSS3 & Responsive Design</span>
+                                    <span class="text-brand-400 font-mono">92%</span>
+                                </div>
+                                <div class="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
+                                    <div class="bg-gradient-to-r from-blue-500 to-indigo-400 h-2 rounded-full w-[92%]"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Backend Development Card -->
+                    <div class="bg-dark-card border border-dark-border rounded-2xl p-7 hover:border-emerald-500/60 transition-all duration-300 group shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-2xl group-hover:rotate-6 transition-transform">
+                                <i class="fa-solid fa-server"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-bold text-xl text-white">Backend</h3>
+                                <p class="text-xs text-slate-400">Server & API Architecture</p>
+                            </div>
+                        </div>
+
+                        <!-- Skill Items -->
+                        <div class="space-y-4">
+                            <!-- Node.js -->
+                            <div>
+                                <div class="flex justify-between text-xs font-semibold mb-1">
+                                    <span class="text-slate-200 flex items-center gap-2"><i class="fa-brands fa-node-js text-emerald-400"></i> Node.js</span>
+                                    <span class="text-emerald-400 font-mono">80%</span>
+                                </div>
+                                <div class="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
+                                    <div class="bg-gradient-to-r from-emerald-600 to-teal-400 h-2 rounded-full w-[80%]"></div>
+                                </div>
+                            </div>
+
+                            <!-- REST APIs -->
+                            <div>
+                                <div class="flex justify-between text-xs font-semibold mb-1">
+                                    <span class="text-slate-200 flex items-center gap-2"><i class="fa-solid fa-network-wired text-indigo-400"></i> RESTful APIs & CRUD</span>
+                                    <span class="text-emerald-400 font-mono">82%</span>
+                                </div>
+                                <div class="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
+                                    <div class="bg-gradient-to-r from-indigo-500 to-purple-400 h-2 rounded-full w-[82%]"></div>
+                                </div>
+                            </div>
+
+                            <!-- Full Stack Integration -->
+                            <div>
+                                <div class="flex justify-between text-xs font-semibold mb-1">
+                                    <span class="text-slate-200 flex items-center gap-2"><i class="fa-solid fa-database text-cyan-400"></i> Full Stack Web Architecture</span>
+                                    <span class="text-emerald-400 font-mono">85%</span>
+                                </div>
+                                <div class="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
+                                    <div class="bg-gradient-to-r from-cyan-500 to-emerald-400 h-2 rounded-full w-[85%]"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tools & Design Card -->
+                    <div class="bg-dark-card border border-dark-border rounded-2xl p-7 hover:border-brand-glow/60 transition-all duration-300 group shadow-lg" data-aos="fade-up" data-aos-delay="300">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-brand-glow flex items-center justify-center text-2xl group-hover:rotate-6 transition-transform">
+                                <i class="fa-solid fa-screwdriver-wrench"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-bold text-xl text-white">Tools & UI/UX</h3>
+                                <p class="text-xs text-slate-400">Design & Productivity</p>
+                            </div>
+                        </div>
+
+                        <!-- Skill Items -->
+                        <div class="space-y-4">
+                            <!-- VS Code -->
+                            <div>
+                                <div class="flex justify-between text-xs font-semibold mb-1">
+                                    <span class="text-slate-200 flex items-center gap-2"><i class="fa-solid fa-laptop-file text-blue-400"></i> VS Code</span>
+                                    <span class="text-brand-glow font-mono">92%</span>
+                                </div>
+                                <div class="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
+                                    <div class="bg-gradient-to-r from-blue-500 to-sky-400 h-2 rounded-full w-[92%]"></div>
+                                </div>
+                            </div>
+
+                            <!-- Figma -->
+                            <div>
+                                <div class="flex justify-between text-xs font-semibold mb-1">
+                                    <span class="text-slate-200 flex items-center gap-2"><i class="fa-brands fa-figma text-rose-400"></i> Figma UI/UX Design</span>
+                                    <span class="text-brand-glow font-mono">88%</span>
+                                </div>
+                                <div class="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
+                                    <div class="bg-gradient-to-r from-rose-500 to-pink-400 h-2 rounded-full w-[88%]"></div>
+                                </div>
+                            </div>
+
+                            <!-- Git & GitHub -->
+                            <div>
+                                <div class="flex justify-between text-xs font-semibold mb-1">
+                                    <span class="text-slate-200 flex items-center gap-2"><i class="fa-brands fa-git-alt text-orange-500"></i> Git & Version Control</span>
+                                    <span class="text-brand-glow font-mono">80%</span>
+                                </div>
+                                <div class="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
+                                    <div class="bg-gradient-to-r from-orange-500 to-amber-400 h-2 rounded-full w-[80%]"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Interactive Tech Badges Carousel / Grid -->
+                <div class="mt-12 p-6 rounded-2xl bg-dark-card/50 border border-slate-800 flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-slate-300">
+                    <div class="flex items-center gap-2.5 hover:text-white transition-colors">
+                        <i class="fa-brands fa-react text-2xl text-cyan-400"></i>
+                        <span class="font-semibold text-sm">React.js</span>
+                    </div>
+                    <div class="flex items-center gap-2.5 hover:text-white transition-colors">
+                        <i class="fa-brands fa-node-js text-2xl text-emerald-400"></i>
+                        <span class="font-semibold text-sm">Node.js</span>
+                    </div>
+                    <div class="flex items-center gap-2.5 hover:text-white transition-colors">
+                        <i class="fa-brands fa-js text-2xl text-yellow-400"></i>
+                        <span class="font-semibold text-sm">JavaScript</span>
+                    </div>
+                    <div class="flex items-center gap-2.5 hover:text-white transition-colors">
+                        <i class="fa-brands fa-html5 text-2xl text-orange-500"></i>
+                        <span class="font-semibold text-sm">HTML5</span>
+                    </div>
+                    <div class="flex items-center gap-2.5 hover:text-white transition-colors">
+                        <i class="fa-brands fa-css3-alt text-2xl text-blue-500"></i>
+                        <span class="font-semibold text-sm">CSS3</span>
+                    </div>
+                    <div class="flex items-center gap-2.5 hover:text-white transition-colors">
+                        <i class="fa-brands fa-figma text-2xl text-rose-400"></i>
+                        <span class="font-semibold text-sm">Figma</span>
+                    </div>
+                    <div class="flex items-center gap-2.5 hover:text-white transition-colors">
+                        <i class="fa-solid fa-code-compare text-2xl text-indigo-400"></i>
+                        <span class="font-semibold text-sm">VS Code</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==================== PROJECTS SECTION ==================== -->
+        <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-dark-border/40">
+            <div class="max-w-7xl mx-auto">
+                
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                    <span class="text-brand-accent text-xs uppercase font-bold tracking-widest px-3 py-1 rounded-full bg-brand-accent/10 border border-brand-accent/20">Featured Work</span>
+                    <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-white mt-3 mb-4">
+                        Projects I've Built & Developed
+                    </h2>
+                    <p class="text-slate-400 text-sm sm:text-base">
+                        Explore practical web applications showcasing real-world problem solving, responsive user experiences, and clean full-stack architecture.
+                    </p>
+                    <div class="w-16 h-1 bg-gradient-to-r from-brand-500 to-brand-accent mx-auto rounded-full mt-4"></div>
+                </div>
+
+                <div class="space-y-12">
+                    
+                    <!-- FEATURED PROJECT 1: Vishwa Event Decoration System -->
+                    <div class="bg-dark-card border border-dark-border hover:border-brand-500/50 rounded-3xl overflow-hidden shadow-2xl transition-all duration-300" data-aos="fade-up">
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center p-6 sm:p-10">
+                            
+                            <!-- Visual Banner / Mockup Preview -->
+                            <div class="lg:col-span-6 order-2 lg:order-1">
+                                <div class="relative rounded-2xl overflow-hidden border border-slate-700/80 bg-gradient-to-br from-indigo-950 via-dark-card to-slate-900 p-6 sm:p-8 shadow-inner group">
+                                    <!-- Decorative header bar -->
+                                    <div class="flex items-center justify-between pb-4 mb-4 border-b border-slate-800">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+                                            <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                                        </div>
+                                        <span class="text-[11px] font-mono text-brand-300">vishwa-event-system.app</span>
+                                    </div>
+
+                                    <!-- Mockup Layout Preview -->
+                                    <div class="space-y-4">
+                                        <div class="p-4 rounded-xl bg-dark-surface/90 border border-slate-800 flex items-center justify-between">
+                                            <div class="flex items-center gap-3">
+                                                <div class="w-10 h-10 rounded-lg bg-brand-500/20 text-brand-400 flex items-center justify-center text-lg">
+                                                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                                                </div>
+                                                <div>
+                                                    <h4 class="font-heading font-bold text-white text-sm">Vishwa Event Decoration</h4>
+                                                    <p class="text-xs text-slate-400">Weddings • Birthdays • Receptions</p>
+                                                </div>
+                                            </div>
+                                            <span class="px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400 text-xs font-semibold">Active</span>
+                                        </div>
+
+                                        <!-- Event Cards Grid Mockup -->
+                                        <div class="grid grid-cols-2 gap-3">
+                                            <div class="p-3 rounded-lg bg-dark-surface/60 border border-slate-800">
+                                                <div class="h-16 rounded bg-brand-500/10 flex items-center justify-center text-brand-400 mb-2">
+                                                    <i class="fa-solid fa-cake-candles text-xl"></i>
+                                                </div>
+                                                <p class="text-xs font-semibold text-white">Birthday Decors</p>
+                                                <p class="text-[10px] text-slate-400">Custom themes</p>
+                                            </div>
+                                            <div class="p-3 rounded-lg bg-dark-surface/60 border border-slate-800">
+                                                <div class="h-16 rounded bg-indigo-500/10 flex items-center justify-center text-indigo-400 mb-2">
+                                                    <i class="fa-solid fa-champagne-glasses text-xl"></i>
+                                                </div>
+                                                <p class="text-xs font-semibold text-white">Stage & Mandap</p>
+                                                <p class="text-[10px] text-slate-400">Grand lighting</p>
+                                            </div>
+                                        </div>
+
+                                        <!-- Booking Action Bar Mockup -->
+                                        <div class="p-3 rounded-xl bg-gradient-to-r from-brand-600/30 to-brand-accent/20 border border-brand-500/30 flex items-center justify-between">
+                                            <span class="text-xs text-slate-200 font-medium">✨ Instant Booking & Consultation</span>
+                                            <span class="px-3 py-1 rounded-lg bg-brand-500 text-white text-xs font-bold">Inquire Now</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Details Column -->
+                            <div class="lg:col-span-6 order-1 lg:order-2">
+                                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400 text-xs font-semibold uppercase tracking-wider mb-3">
+                                    <i class="fa-solid fa-star text-amber-400 text-xs"></i> Major Flagship Project
+                                </div>
+                                <h3 class="font-heading text-2xl sm:text-3xl font-bold text-white mb-3">
+                                    Vishwa Event Decoration System
+                                </h3>
+                                <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+                                    A full-stack, user-friendly event decoration management platform built to showcase decoration portfolios, facilitate event scheduling, and automate client booking inquiries for weddings, birthdays, and festive occasions.
+                                </p>
+
+                                <!-- Key Features List -->
+                                <div class="space-y-2 mb-6">
+                                    <div class="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
+                                        <i class="fa-solid fa-check-circle text-emerald-400 mt-0.5"></i>
+                                        <span><strong>Interactive Catalog:</strong> Filterable showcase of decor themes with responsive photo galleries.</span>
+                                    </div>
+                                    <div class="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
+                                        <i class="fa-solid fa-check-circle text-emerald-400 mt-0.5"></i>
+                                        <span><strong>Booking Inquiries:</strong> Seamless client consultation form with date & requirement selection.</span>
+                                    </div>
+                                    <div class="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
+                                        <i class="fa-solid fa-check-circle text-emerald-400 mt-0.5"></i>
+                                        <span><strong>Full Stack Integration:</strong> React-driven dynamic frontend backed by Node.js service routes.</span>
+                                    </div>
+                                </div>
+
+                                <!-- Tech Stack Chips -->
+                                <div class="flex flex-wrap gap-2 mb-8">
+                                    <span class="px-3 py-1 rounded-lg bg-dark-surface border border-slate-700 text-xs font-mono text-cyan-300">React.js</span>
+                                    <span class="px-3 py-1 rounded-lg bg-dark-surface border border-slate-700 text-xs font-mono text-emerald-300">Node.js</span>
+                                    <span class="px-3 py-1 rounded-lg bg-dark-surface border border-slate-700 text-xs font-mono text-yellow-300">JavaScript (ES6)</span>
+                                    <span class="px-3 py-1 rounded-lg bg-dark-surface border border-slate-700 text-xs font-mono text-orange-300">HTML5</span>
+                                    <span class="px-3 py-1 rounded-lg bg-dark-surface border border-slate-700 text-xs font-mono text-blue-300">CSS3</span>
+                                </div>
+
+                                <!-- Action Links -->
+                                <div class="flex flex-wrap items-center gap-4">
+                                    <button onclick="openProjectModal('vishwa')" class="px-5 py-2.5 rounded-xl font-semibold text-white bg-gradient-to-r from-brand-600 to-brand-accent hover:from-brand-500 hover:to-cyan-400 shadow-lg shadow-brand-600/30 transition-all flex items-center gap-2 text-sm">
+                                        <i class="fa-solid fa-circle-info"></i>
+                                        <span>Project Overview</span>
+                                    </button>
+                                    <a href="https://github.com/dipeshawani" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl font-semibold text-slate-200 hover:text-white bg-dark-surface border border-slate-700 hover:border-slate-500 transition-all flex items-center gap-2 text-sm">
+                                        <i class="fa-brands fa-github text-base"></i>
+                                        <span>GitHub Repo</span>
+                                    </a>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- SECONDARY PROJECTS GRID -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        
+                        <!-- PROJECT 2: Personal Portfolio & Brand -->
+                        <div class="bg-dark-card border border-dark-border hover:border-brand-accent/50 rounded-2xl p-7 shadow-xl transition-all duration-300 group flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+                            <div>
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="w-12 h-12 rounded-xl bg-brand-accent/10 text-brand-accent flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                                        <i class="fa-solid fa-id-card-clip"></i>
+                                    </div>
+                                    <span class="px-3 py-1 rounded-full bg-slate-800 text-slate-400 text-xs font-medium">Frontend & UI/UX</span>
+                                </div>
+                                <h3 class="font-heading font-bold text-xl text-white mb-2">
+                                    Interactive Developer Portfolio
+                                </h3>
+                                <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                                    Modern, high-performance developer portfolio featuring sleek dark mode, interactive glowing aesthetics, responsive layouts, and smooth animations designed first in Figma.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="px-2.5 py-1 rounded bg-dark-surface text-slate-300 text-xs font-mono border border-slate-800">HTML5</span>
+                                    <span class="px-2.5 py-1 rounded bg-dark-surface text-slate-300 text-xs font-mono border border-slate-800">CSS3</span>
+                                    <span class="px-2.5 py-1 rounded bg-dark-surface text-slate-300 text-xs font-mono border border-slate-800">JavaScript</span>
+                                    <span class="px-2.5 py-1 rounded bg-dark-surface text-slate-300 text-xs font-mono border border-slate-800">Figma</span>
+                                </div>
+                            </div>
+                            <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+                                <span class="text-xs text-emerald-400 flex items-center gap-1.5">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Live Portfolio
+                                </span>
+                                <div class="flex items-center gap-3">
+                                    <a href="https://github.com/dipeshawani" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-slate-300 hover:text-white flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-dark-surface hover:bg-slate-800 border border-slate-800 hover:border-slate-600 transition-all">
+                                        <i class="fa-brands fa-github text-sm"></i> Code
+                                    </a>
+                                    <a href="#home" class="text-sm font-semibold text-brand-accent hover:text-cyan-300 flex items-center gap-1">
+                                        <span>View Details</span> <i class="fa-solid fa-arrow-right text-xs"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PROJECT 3: Event Booking & Consultation Dashboard -->
+                        <div class="bg-dark-card border border-dark-border hover:border-brand-glow/50 rounded-2xl p-7 shadow-xl transition-all duration-300 group flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
+                            <div>
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-brand-glow flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                                        <i class="fa-solid fa-calendar-check"></i>
+                                    </div>
+                                    <span class="px-3 py-1 rounded-full bg-slate-800 text-slate-400 text-xs font-medium">Full Stack Architecture</span>
+                                </div>
+                                <h3 class="font-heading font-bold text-xl text-white mb-2">
+                                    Smart Event Booking & Scheduling Hub
+                                </h3>
+                                <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                                    A scheduling component and inquiry management portal designed with modular components, interactive calendar selection, and dynamic cost estimator for event clients.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="px-2.5 py-1 rounded bg-dark-surface text-slate-300 text-xs font-mono border border-slate-800">React.js</span>
+                                    <span class="px-2.5 py-1 rounded bg-dark-surface text-slate-300 text-xs font-mono border border-slate-800">Node.js</span>
+                                    <span class="px-2.5 py-1 rounded bg-dark-surface text-slate-300 text-xs font-mono border border-slate-800">REST APIs</span>
+                                    <span class="px-2.5 py-1 rounded bg-dark-surface text-slate-300 text-xs font-mono border border-slate-800">VS Code</span>
+                                </div>
+                            </div>
+                            <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+                                <span class="text-xs text-brand-400 flex items-center gap-1.5">
+                                    <i class="fa-solid fa-code-branch"></i> Modular Module
+                                </span>
+                                <button onclick="openProjectModal('vishwa')" class="text-sm font-semibold text-brand-400 hover:text-brand-300 flex items-center gap-1">
+                                    <span>Learn More</span> <i class="fa-solid fa-arrow-right text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==================== EDUCATION SECTION ==================== -->
+        <section id="education" class="py-20 px-4 sm:px-6 lg:px-8 bg-dark-surface/40 border-t border-dark-border/40">
+            <div class="max-w-7xl mx-auto">
+                
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                    <span class="text-brand-500 text-xs uppercase font-bold tracking-widest px-3 py-1 rounded-full bg-brand-500/10 border border-brand-500/20">Academic Background</span>
+                    <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-white mt-3 mb-4">
+                        Education & Qualifications
+                    </h2>
+                    <p class="text-slate-400 text-sm sm:text-base">
+                        Academic journey nurturing my technical foundations in Computer Engineering.
+                    </p>
+                    <div class="w-16 h-1 bg-gradient-to-r from-brand-500 to-brand-accent mx-auto rounded-full mt-4"></div>
+                </div>
+
+                <!-- Education Timeline Card -->
+                <div class="max-w-4xl mx-auto">
+                    <div class="relative pl-6 sm:pl-10 border-l-2 border-brand-500/40 space-y-12">
+                        
+                        <!-- Timeline Item 1: B.Tech Computer Engineering -->
+                        <div class="relative" data-aos="fade-up">
+                            <!-- Bullet Marker -->
+                            <div class="absolute -left-[31px] sm:-left-[47px] top-1.5 w-6 h-6 rounded-full bg-brand-600 border-4 border-dark-bg flex items-center justify-center shadow-lg shadow-brand-500/50">
+                                <span class="w-2 h-2 rounded-full bg-white"></span>
+                            </div>
+
+                            <div class="bg-dark-card border border-dark-border rounded-2xl p-6 sm:p-8 hover:border-brand-500/50 transition-all duration-300 shadow-xl">
+                                <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                    <span class="px-3 py-1 rounded-full bg-brand-500/10 text-brand-300 text-xs font-bold uppercase tracking-wider border border-brand-500/20">
+                                        Bachelor of Technology (B.Tech)
+                                    </span>
+                                    <span class="text-xs text-slate-400 font-mono flex items-center gap-1.5">
+                                        <i class="fa-regular fa-calendar"></i> In Progress
+                                    </span>
+                                </div>
+
+                                <h3 class="font-heading text-2xl font-bold text-white mb-1">
+                                    B.Tech in Computer Engineering
+                                </h3>
+                                <p class="text-brand-accent font-medium text-base mb-4 flex items-center gap-2">
+                                    <i class="fa-solid fa-graduation-cap"></i>
+                                    R. C. Patel Institute of Technology (RCPIT), Shirpur
+                                </p>
+
+                                <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+                                    Enrolled in the Computer Engineering program at RCPIT Shirpur, focusing on software engineering principles, full-stack web applications, database management, and user experience engineering.
+                                </p>
+
+                                <!-- Relevant Coursework & Focus -->
+                                <div>
+                                    <h5 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Key Areas of Study:</h5>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-3 py-1 rounded-lg bg-dark-surface border border-slate-800 text-xs text-slate-300">Web Technologies</span>
+                                        <span class="px-3 py-1 rounded-lg bg-dark-surface border border-slate-800 text-xs text-slate-300">Data Structures & Algorithms</span>
+                                        <span class="px-3 py-1 rounded-lg bg-dark-surface border border-slate-800 text-xs text-slate-300">Database Management Systems (DBMS)</span>
+                                        <span class="px-3 py-1 rounded-lg bg-dark-surface border border-slate-800 text-xs text-slate-300">Object-Oriented Programming</span>
+                                        <span class="px-3 py-1 rounded-lg bg-dark-surface border border-slate-800 text-xs text-slate-300">Software Engineering</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==================== CONTACT SECTION ==================== -->
+        <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-dark-border/40">
+            <div class="max-w-7xl mx-auto">
+                
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                    <span class="text-brand-accent text-xs uppercase font-bold tracking-widest px-3 py-1 rounded-full bg-brand-accent/10 border border-brand-accent/20">Get In Touch</span>
+                    <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-white mt-3 mb-4">
+                        Let's Discuss New Opportunities & Ideas
+                    </h2>
+                    <p class="text-slate-400 text-sm sm:text-base">
+                        Have a project, internship, or full-time opportunity? Feel free to reach out directly or drop a message below!
+                    </p>
+                    <div class="w-16 h-1 bg-gradient-to-r from-brand-500 to-brand-accent mx-auto rounded-full mt-4"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+                    
+                    <!-- Contact Cards (Left) -->
+                    <div class="lg:col-span-5 space-y-6" data-aos="fade-right">
+                        
+                        <!-- Email Card -->
+                        <div class="bg-dark-card border border-dark-border hover:border-brand-500/50 p-6 rounded-2xl transition-all duration-300 group shadow-lg">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                                        <i class="fa-regular fa-envelope"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-400 uppercase font-semibold">Email Address</p>
+                                        <a href="mailto:dipeshawani7@gmail.com" class="text-white hover:text-brand-400 font-semibold text-sm sm:text-base transition-colors break-all">
+                                            dipeshawani7@gmail.com
+                                        </a>
+                                    </div>
+                                </div>
+                                <button onclick="copyToClipboard('dipeshawani7@gmail.com', 'Email copied!')" class="p-2 rounded-lg bg-dark-surface hover:bg-slate-700 text-slate-400 hover:text-white transition-colors" title="Copy email">
+                                    <i class="fa-regular fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Phone Card -->
+                        <div class="bg-dark-card border border-dark-border hover:border-emerald-500/50 p-6 rounded-2xl transition-all duration-300 group shadow-lg">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                                        <i class="fa-solid fa-phone"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-400 uppercase font-semibold">Phone & WhatsApp</p>
+                                        <a href="tel:9420600569" class="text-white hover:text-emerald-400 font-semibold text-sm sm:text-base transition-colors">
+                                            +91 9420600569
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <a href="https://wa.me/919420600569" target="_blank" class="p-2 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 transition-colors" title="Chat on WhatsApp">
+                                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                                    </a>
+                                    <button onclick="copyToClipboard('9420600569', 'Phone number copied!')" class="p-2 rounded-lg bg-dark-surface hover:bg-slate-700 text-slate-400 hover:text-white transition-colors" title="Copy phone">
+                                        <i class="fa-regular fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Location Card -->
+                        <div class="bg-dark-card border border-dark-border hover:border-brand-accent/50 p-6 rounded-2xl transition-all duration-300 group shadow-lg">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-brand-accent/10 text-brand-accent flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-400 uppercase font-semibold">Current Location</p>
+                                    <h4 class="text-white font-semibold text-base">Shindkheda, Maharashtra, India</h4>
+                                    <p class="text-xs text-slate-400">Open to on-site, hybrid, or remote opportunities</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Social / Profiles Card -->
+                        <div class="p-6 rounded-2xl bg-gradient-to-br from-brand-950/40 via-dark-card to-dark-surface border border-slate-800">
+                            <h4 class="font-heading font-bold text-white text-base mb-3">Connect Online</h4>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="https://github.com/dipeshawani" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-dark-card hover:bg-slate-800 border border-slate-700 hover:border-slate-500 text-slate-200 hover:text-white text-sm font-semibold flex items-center gap-2 transition-all">
+                                    <i class="fa-brands fa-github text-base"></i> GitHub
+                                </a>
+                                <a href="https://linkedin.com/in/dipesha-wani" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-dark-card hover:bg-slate-800 border border-slate-700 hover:border-slate-500 text-slate-200 hover:text-white text-sm font-semibold flex items-center gap-2 transition-all">
+                                    <i class="fa-brands fa-linkedin text-blue-400 text-base"></i> LinkedIn
+                                </a>
+                                <a href="mailto:dipeshawani7@gmail.com" class="px-4 py-2 rounded-xl bg-dark-card hover:bg-slate-800 border border-slate-700 hover:border-slate-500 text-slate-200 hover:text-white text-sm font-semibold flex items-center gap-2 transition-all">
+                                    <i class="fa-regular fa-envelope text-brand-accent text-base"></i> Gmail
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Direct Message Form (Right) -->
+                    <div class="lg:col-span-7" data-aos="fade-left">
+                        <div class="bg-dark-card border border-dark-border rounded-3xl p-8 sm:p-10 shadow-2xl">
+                            <h3 class="font-heading text-2xl font-bold text-white mb-2">Send a Direct Message</h3>
+                            <p class="text-slate-400 text-sm mb-8">
+                                Fill in the details below, and I'll get back to you promptly.
+                            </p>
+
+                            <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-6">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                    <div>
+                                        <label for="name" class="block text-xs font-semibold uppercase text-slate-300 mb-2">Your Name *</label>
+                                        <input type="text" id="name" name="name" required placeholder="e.g. Rahul Sharma" class="w-full px-4 py-3 rounded-xl bg-dark-surface border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all text-sm">
+                                    </div>
+                                    <div>
+                                        <label for="email" class="block text-xs font-semibold uppercase text-slate-300 mb-2">Your Email *</label>
+                                        <input type="email" id="email" name="email" required placeholder="name@example.com" class="w-full px-4 py-3 rounded-xl bg-dark-surface border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all text-sm">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label for="subject" class="block text-xs font-semibold uppercase text-slate-300 mb-2">Subject</label>
+                                    <input type="text" id="subject" name="subject" placeholder="Project Inquiry / Job Opportunity" class="w-full px-4 py-3 rounded-xl bg-dark-surface border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all text-sm">
+                                </div>
+
+                                <div>
+                                    <label for="message" class="block text-xs font-semibold uppercase text-slate-300 mb-2">Your Message *</label>
+                                    <textarea id="message" name="message" rows="5" required placeholder="Hello Dipesha, I reviewed your portfolio and would like to discuss..." class="w-full px-4 py-3 rounded-xl bg-dark-surface border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all text-sm resize-none"></textarea>
+                                </div>
+
+                                <button type="submit" id="submit-btn" class="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-brand-600 via-indigo-600 to-brand-accent hover:from-brand-500 hover:to-cyan-400 shadow-xl shadow-brand-600/30 hover:shadow-cyan-500/40 transform hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2">
+                                    <i class="fa-regular fa-paper-plane"></i>
+                                    <span>Send Message</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="bg-dark-card border-t border-dark-border py-12 px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg bg-gradient-to-tr from-brand-600 to-brand-accent flex items-center justify-center font-heading font-extrabold text-white text-base shadow-md">
+                    DW
+                </div>
+                <div>
+                    <h4 class="font-heading font-bold text-white text-base">Dipesha Ajay Wani</h4>
+                    <p class="text-xs text-slate-400">Full Stack Developer • Shindkheda, Maharashtra</p>
+                </div>
+            </div>
+
+            <!-- Footer Social Icons -->
+            <div class="flex items-center gap-3">
+                <a href="https://github.com/dipeshawani" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-dark-surface hover:bg-slate-800 border border-slate-800 hover:border-slate-600 flex items-center justify-center text-slate-300 hover:text-white transition-all text-base hover:scale-105 shadow-sm" title="Visit GitHub Profile">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/dipesha-wani" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-dark-surface hover:bg-slate-800 border border-slate-800 hover:border-slate-600 flex items-center justify-center text-blue-400 hover:text-blue-300 transition-all text-base hover:scale-105 shadow-sm" title="Visit LinkedIn Profile">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+                <a href="mailto:dipeshawani7@gmail.com" class="w-10 h-10 rounded-xl bg-dark-surface hover:bg-slate-800 border border-slate-800 hover:border-slate-600 flex items-center justify-center text-brand-accent hover:text-cyan-300 transition-all text-base hover:scale-105 shadow-sm" title="Send Email">
+                    <i class="fa-regular fa-envelope"></i>
+                </a>
+            </div>
+
+            <div class="text-center md:text-right text-xs text-slate-400">
+                <p>© 2026 Dipesha Ajay Wani. All rights reserved.</p>
+                <p class="mt-1 text-slate-500">Built with HTML5, Tailwind CSS & JavaScript • Engineered with passion</p>
+            </div>
+
+            <!-- Back to top button -->
+            <a href="#home" class="w-10 h-10 rounded-xl bg-dark-surface hover:bg-slate-800 border border-slate-800 flex items-center justify-center text-slate-300 hover:text-white transition-all" title="Back to top">
+                <i class="fa-solid fa-arrow-up text-sm"></i>
+            </a>
+
+        </div>
+    </footer>
+
+    <!-- ==================== PROJECT MODAL ==================== -->
+    <div id="project-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="bg-dark-card border border-dark-border rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeProjectModal()" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-dark-surface border border-slate-700 text-slate-400 hover:text-white flex items-center justify-center transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modal-content">
+                <!-- Dynamically populated via script.js -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Popup -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none px-5 py-3 rounded-xl bg-emerald-500 text-white font-semibold text-sm shadow-xl flex items-center gap-2">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toast-message">Message copied!</span>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

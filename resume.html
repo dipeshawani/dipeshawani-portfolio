@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Immediate Theme Initialization (Prevents flicker) -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('portfolio-theme');
+            if (savedTheme === 'light') {
+                document.documentElement.classList.remove('dark');
+                document.documentElement.classList.add('light');
+            } else {
+                document.documentElement.classList.add('dark');
+                document.documentElement.classList.remove('light');
+            }
+        })();
+    </script>
+    <title>Resume - Dipesha Ajay Wani | Full Stack Developer</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: background-color 0.25s ease, color 0.25s ease;
+        }
+
+        /* Light Theme (White Mode) */
+        html.light body {
+            background-color: #f1f5f9;
+            color: #1e293b;
+        }
+
+        html.light .resume-sheet {
+            background-color: #ffffff !important;
+            border-color: #e2e8f0 !important;
+            color: #334155 !important;
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08) !important;
+        }
+
+        html.light .text-white {
+            color: #0f172a !important;
+        }
+
+        html.light .text-slate-100,
+        html.light .text-slate-200 {
+            color: #1e293b !important;
+        }
+
+        html.light .text-slate-300 {
+            color: #334155 !important;
+        }
+
+        html.light .text-slate-400 {
+            color: #64748b !important;
+        }
+
+        html.light .bg-slate-900,
+        html.light .bg-slate-900\/60,
+        html.light .bg-slate-950 {
+            background-color: #f8fafc !important;
+        }
+
+        html.light .border-slate-800,
+        html.light .border-slate-800\/60,
+        html.light .border-slate-800\/80,
+        html.light .border-slate-700 {
+            border-color: #e2e8f0 !important;
+        }
+
+        html.light .no-print a,
+        html.light .no-print #resume-theme-toggle {
+            background-color: #ffffff !important;
+            border-color: #cbd5e1 !important;
+            color: #1e293b !important;
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            body {
+                background: white !important;
+                color: black !important;
+                padding: 0 !important;
+            }
+
+            .resume-sheet {
+                box-shadow: none !important;
+                border: none !important;
+                max-width: 100% !important;
+                width: 100% !important;
+                padding: 20px !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-slate-100 min-h-screen py-10 px-4 flex flex-col items-center">
+
+    <!-- Top Action Bar -->
+    <div class="max-w-4xl w-full flex justify-between items-center mb-6 no-print">
+        <a href="index.html"
+            class="inline-flex items-center gap-2 text-sm text-slate-300 hover:text-white bg-slate-800 border border-slate-700 px-4 py-2 rounded-xl transition-all">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Back to Portfolio</span>
+        </a>
+        <div class="flex items-center gap-3">
+            <button id="resume-theme-toggle" onclick="toggleResumeTheme()"
+                class="inline-flex items-center gap-2 text-sm text-slate-300 hover:text-white bg-slate-800 border border-slate-700 px-4 py-2 rounded-xl transition-all" title="Toggle White / Black Theme">
+                <i id="resume-theme-icon" class="fa-solid fa-sun text-amber-400"></i>
+                <span id="resume-theme-text">White Theme</span>
+            </button>
+            <button onclick="window.print()"
+                class="inline-flex items-center gap-2 text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-500 px-5 py-2 rounded-xl shadow-lg transition-all">
+                <i class="fa-solid fa-print"></i>
+                <span>Print / Save as PDF</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Resume Document Sheet (A4 Styled) -->
+    <div
+        class="resume-sheet max-w-4xl w-full bg-slate-950 text-slate-200 border border-slate-800 rounded-3xl p-8 sm:p-12 shadow-2xl">
+
+        <!-- Header -->
+        <header
+            class="border-b border-slate-800 pb-8 mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
+            <div>
+                <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Dipesha Ajay Wani</h1>
+                <p class="text-indigo-400 font-semibold text-lg mt-1">Full Stack Developer</p>
+                <p class="text-slate-400 text-xs sm:text-sm mt-1">B.Tech Computer Engineering Student • RCPIT Shirpur
+                </p>
+            </div>
+
+            <div class="text-xs sm:text-sm text-slate-300 space-y-1.5 sm:text-right">
+                <div><i class="fa-regular fa-envelope text-indigo-400 mr-2"></i><a href="mailto:dipeshawani7@gmail.com"
+                        class="hover:underline">dipeshawani7@gmail.com</a></div>
+                <div><i class="fa-solid fa-phone text-emerald-400 mr-2"></i><a href="tel:9420600569"
+                        class="hover:underline">+91 9420600569</a></div>
+                <div><i class="fa-solid fa-location-dot text-rose-400 mr-2"></i>Shindkheda, Maharashtra, India</div>
+                <div><i class="fa-brands fa-github text-slate-400 mr-2"></i><a href="https://github.com/dipeshawani" target="_blank" rel="noopener noreferrer" class="hover:underline hover:text-indigo-400">github.com/dipeshawani</a></div>
+            </div>
+        </header>
+
+        <!-- Professional Summary -->
+        <section class="mb-8">
+            <h2 class="text-xs font-bold uppercase tracking-wider text-indigo-400 mb-2 flex items-center gap-2">
+                <i class="fa-solid fa-user"></i> Professional Summary
+            </h2>
+            <p class="text-slate-300 text-sm leading-relaxed">
+                Motivated and detail-oriented Computer Engineering student at R. C. Patel Institute of Technology
+                (RCPIT) with strong foundations in Full Stack Web Development. Experienced in designing intuitive user
+                interfaces using Figma and engineering responsive web applications utilizing HTML5, CSS3, JavaScript,
+                React.js, and Node.js. Passionate about solving real-world challenges through clean code and scalable
+                design.
+            </p>
+        </section>
+
+        <!-- Technical Skills -->
+        <section class="mb-8">
+            <h2 class="text-xs font-bold uppercase tracking-wider text-indigo-400 mb-3 flex items-center gap-2">
+                <i class="fa-solid fa-code"></i> Technical Skills
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+                <div class="bg-slate-900 border border-slate-800 p-3.5 rounded-xl">
+                    <span class="font-bold text-white block mb-1 text-sm">Frontend</span>
+                    <p class="text-slate-300 leading-relaxed">React.js, JavaScript (ES6+), HTML5, CSS3, Responsive Web
+                        Design</p>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 p-3.5 rounded-xl">
+                    <span class="font-bold text-white block mb-1 text-sm">Backend & APIs</span>
+                    <p class="text-slate-300 leading-relaxed">Node.js, RESTful APIs, JSON, Client-Server Architecture
+                    </p>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 p-3.5 rounded-xl">
+                    <span class="font-bold text-white block mb-1 text-sm">Tools & Design</span>
+                    <p class="text-slate-300 leading-relaxed">VS Code, Figma (UI/UX Prototyping), Git, GitHub</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects -->
+        <section class="mb-8">
+            <h2 class="text-xs font-bold uppercase tracking-wider text-indigo-400 mb-3 flex items-center gap-2">
+                <i class="fa-solid fa-folder-open"></i> Key Projects
+            </h2>
+
+            <!-- Project 1 -->
+            <div class="mb-5 bg-slate-900/60 border border-slate-800/80 p-4 rounded-xl">
+                <div class="flex justify-between items-baseline mb-1">
+                    <h3 class="font-bold text-white text-base">Vishwa Event Decoration System</h3>
+                    <span class="text-xs text-indigo-300 font-mono">React • Node.js • HTML/CSS/JS</span>
+                </div>
+                <p class="text-xs text-slate-400 font-medium mb-2">Full Stack Web Application</p>
+                <ul class="list-disc pl-5 text-xs text-slate-300 space-y-1 leading-relaxed">
+                    <li>Developed an interactive web application designed to digitize and manage booking inquiries for
+                        event decorations (Weddings, Receptions, Birthdays).</li>
+                    <li>Built dynamic frontend components in React.js for catalog browsing, gallery views, and instant
+                        cost estimation.</li>
+                    <li>Integrated Node.js backend routes to receive client requirements, validate form data, and
+                        facilitate immediate communication.</li>
+                    <li>Designed user flows and prototypes using Figma before implementation to ensure a smooth,
+                        mobile-first experience.</li>
+                </ul>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="bg-slate-900/60 border border-slate-800/80 p-4 rounded-xl">
+                <div class="flex justify-between items-baseline mb-1">
+                    <h3 class="font-bold text-white text-base">Personal Developer Portfolio</h3>
+                    <span class="text-xs text-indigo-300 font-mono">HTML5 • Tailwind CSS • JavaScript</span>
+                </div>
+                <p class="text-xs text-slate-400 font-medium mb-2">Frontend & Personal Branding</p>
+                <ul class="list-disc pl-5 text-xs text-slate-300 space-y-1 leading-relaxed">
+                    <li>Crafted a high-performance modern portfolio featuring dark aesthetic, interactive animations,
+                        and responsive layouts across all device resolutions.</li>
+                    <li>Included interactive modules like dynamic typing banner, smooth project showcase modal, and
+                        direct contact system.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section class="mb-8">
+            <h2 class="text-xs font-bold uppercase tracking-wider text-indigo-400 mb-3 flex items-center gap-2">
+                <i class="fa-solid fa-graduation-cap"></i> Education
+            </h2>
+            <div class="space-y-4">
+                <div class="flex flex-col sm:flex-row justify-between sm:items-baseline">
+                    <div>
+                        <h3 class="font-bold text-white text-sm">Bachelor of Technology (B.Tech) - Computer Engineering</h3>
+                        <p class="text-slate-400 text-xs">R. C. Patel Institute of Technology (RCPIT), Shirpur</p>
+                    </div>
+                    <span class="text-xs text-slate-400 font-mono mt-1 sm:mt-0">Pursuing (Computer Engineering)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strengths / Soft Skills -->
+        <section>
+            <h2 class="text-xs font-bold uppercase tracking-wider text-indigo-400 mb-2 flex items-center gap-2">
+                <i class="fa-solid fa-award"></i> Core Strengths
+            </h2>
+            <div class="flex flex-wrap gap-2 text-xs">
+                <span class="px-3 py-1 bg-slate-900 border border-slate-800 rounded-lg text-slate-300">Problem
+                    Solving</span>
+                <span class="px-3 py-1 bg-slate-900 border border-slate-800 rounded-lg text-slate-300">Clean Code
+                    Practices</span>
+                <span class="px-3 py-1 bg-slate-900 border border-slate-800 rounded-lg text-slate-300">UI/UX
+                    Mindset</span>
+                <span class="px-3 py-1 bg-slate-900 border border-slate-800 rounded-lg text-slate-300">Fast
+                    Learner</span>
+                <span class="px-3 py-1 bg-slate-900 border border-slate-800 rounded-lg text-slate-300">Effective
+                    Communication</span>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Resume Theme Controller -->
+    <script>
+        function updateResumeThemeUI(theme) {
+            const icon = document.getElementById('resume-theme-icon');
+            const text = document.getElementById('resume-theme-text');
+            if (theme === 'light') {
+                document.documentElement.classList.remove('dark');
+                document.documentElement.classList.add('light');
+                if (icon) icon.className = 'fa-solid fa-moon text-indigo-500';
+                if (text) text.textContent = 'Black Theme';
+            } else {
+                document.documentElement.classList.add('dark');
+                document.documentElement.classList.remove('light');
+                if (icon) icon.className = 'fa-solid fa-sun text-amber-400';
+                if (text) text.textContent = 'White Theme';
+            }
+        }
+
+        function toggleResumeTheme() {
+            const isDark = document.documentElement.classList.contains('dark');
+            const nextTheme = isDark ? 'light' : 'dark';
+            localStorage.setItem('portfolio-theme', nextTheme);
+            updateResumeThemeUI(nextTheme);
+        }
+
+        // Initialize UI icon/text on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
+            updateResumeThemeUI(savedTheme);
+        });
+    </script>
+</body>
+
+</html>
